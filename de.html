@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Meine Reise</title>
-<meta name="description" content="Meine persönliche Geschichte mit Brustkrebs und ein kostenloser Ratgeber, den ich für Betroffene und Angehörige in Deutschland zusammengestellt habe.">
+<meta name="description" content="Meine persönliche Geschichte mit Brustkrebs, erzählt zum Pinktober, und ein kostenloser Ratgeber für Betroffene und Angehörige in Deutschland.">
 <link rel="alternate" hreflang="en" href="https://usha3012.github.io/brustkrebs-guide/">
 <link rel="alternate" hreflang="de" href="https://usha3012.github.io/brustkrebs-guide/de">
 <link rel="alternate" hreflang="x-default" href="https://usha3012.github.io/brustkrebs-guide/">
@@ -12,291 +12,144 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;1,9..144,400&display=swap">
 <style>
-/* Layout: one calm reading column; the journey uses a sticky phase label beside its steps on wide screens. */
-:root{
-  --paper:#f5f6f2;      /* misty green-grey ground */
-  --surface:#ffffff;
-  --ink:#2b2731;        /* plum-tinted ink */
-  --muted:#5d5a64;
-  --line:#dcdfd8;
-  --rose:#9e4a66;       /* accent, used sparingly */
-  --rose-soft:#f4e4ea;
-  --on-rose:#ffffff;
-  --sage:#3c6858;       /* reassurance */
-  --sage-soft:#e2ebe5;
-  --amber:#7d5208;      /* urgent only */
-  --amber-soft:#fbefd9;
-  --amber-line:#ecd29f;
-  --shadow:0 1px 2px rgb(43 39 49 / .04),0 8px 24px rgb(43 39 49 / .05);
-  --display:"Fraunces",Georgia,"Times New Roman",serif;
-  --body:"Atkinson Hyperlegible",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
-  --measure:66ch;
-  color-scheme:light;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --paper:#18171b;--surface:#222026;--ink:#ece8ef;--muted:#aaa4ae;--line:#35323a;
-    --rose:#e8a0b8;--rose-soft:#3a2630;--on-rose:#24161c;
-    --sage:#93c5b0;--sage-soft:#1e2e28;
-    --amber:#f2c57d;--amber-soft:#34291a;--amber-line:#5a4523;
-    --shadow:0 1px 2px rgb(0 0 0 / .3);
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#18171b;--surface:#222026;--ink:#ece8ef;--muted:#aaa4ae;--line:#35323a;
-  --rose:#e8a0b8;--rose-soft:#3a2630;--on-rose:#24161c;
-  --sage:#93c5b0;--sage-soft:#1e2e28;
-  --amber:#f2c57d;--amber-soft:#34291a;--amber-line:#5a4523;
-  --shadow:0 1px 2px rgb(0 0 0 / .3);
-  color-scheme:dark;
-}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font:1.0625rem/1.7 var(--body)}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-a{color:var(--rose);text-underline-offset:.2em;text-decoration-thickness:1px}
-a:hover{text-decoration-thickness:2px}
-:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:6px}
-h1,h2,h3{font-family:var(--display);font-weight:560;text-wrap:balance;margin:0;letter-spacing:-.01em}
-h1{font-size:clamp(2.4rem,6vw,4.1rem);line-height:1.05;font-variation-settings:"opsz" 144}
-h2{font-size:clamp(1.75rem,3.4vw,2.4rem);line-height:1.15;font-variation-settings:"opsz" 96}
-h3{font-size:1.25rem;line-height:1.3;font-variation-settings:"opsz" 24}
-p{margin:0}
-.wrap{max-width:1080px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-.label{font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--sage)}
-.intro{max-width:var(--measure);color:var(--muted);font-size:1.1rem}
-.stack{display:grid;gap:14px}
-.skip{position:absolute;left:12px;top:-60px;background:var(--surface);padding:10px 14px;border-radius:8px;z-index:50}
-.skip:focus{top:12px}
-
-/* Top bar */
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.1rem;color:var(--ink);text-decoration:none;white-space:nowrap}
-.brand svg{width:26px;height:26px;flex:none}
-.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
-.nav::-webkit-scrollbar{display:none}
+:root{--bg:#fff4f8;--bg2:#ffe6ee;--card:#ffffff;--ink:#3a2030;--muted:#6a4b5b;--line:#f3cddb;--pink:#d6336c;--deep:#a61e4d;--soft:#ffdbe7;--mid:#f783ac;--btn:#a61e4d;--onbtn:#fff;--shadow:0 2px 4px rgb(166 30 77/.06),0 18px 40px rgb(166 30 77/.10);--display:"Fraunces",Georgia,"Times New Roman",serif;--body:"Atkinson Hyperlegible",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;--measure:62ch;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#1d1019;--bg2:#2a1522;--card:#2a1824;--ink:#fbe8f0;--muted:#d6b6c4;--line:#4a2a3b;--pink:#ff8fb7;--deep:#ffb6d0;--soft:#40202f;--mid:#ff8fb7;--btn:#ff9fc2;--onbtn:#2a0f1b;--shadow:0 1px 2px rgb(0 0 0/.35),0 18px 40px rgb(0 0 0/.35);color-scheme:dark}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.1rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);font-weight:560;letter-spacing:-.01em;margin:0;text-wrap:balance;line-height:1.1}
+a{color:var(--deep)}
+.wrap{max-width:1040px;margin-inline:auto;padding-inline:max(20px,env(safe-area-inset-left,0px))}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--card);padding:8px 12px;border-radius:8px;z-index:50}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:6px}
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.15rem;color:var(--ink);text-decoration:none;white-space:nowrap}
+.brand svg{width:26px;height:26px}
+.nav{display:flex;gap:6px;align-items:center}
 .nav a{color:var(--muted);text-decoration:none;font-size:.95rem;padding:6px 12px;border-radius:999px;white-space:nowrap}
-.nav a:hover{color:var(--ink);background:var(--surface)}
-.nav a.lang{border:1px solid var(--line);margin-left:6px;color:var(--ink)}
-.nav a.active{color:var(--ink);background:var(--rose-soft)}
-@media (max-width:760px){.bar .wrap{flex-direction:column;align-items:flex-start;gap:4px;padding-block:10px}.nav{width:100%;margin-left:-12px}}
-
-/* Hero */
-.hero{position:relative;overflow:hidden;padding-block:clamp(56px,9vw,104px) 48px}
-.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:min(620px,90vw);aspect-ratio:1;border-radius:46% 54% 60% 40%/50% 42% 58% 50%;background:radial-gradient(circle at 35% 40%,var(--rose-soft),transparent 62%),radial-gradient(circle at 70% 70%,var(--sage-soft),transparent 60%);z-index:-1;animation:drift 22s ease-in-out infinite alternate}
-@keyframes drift{to{transform:rotate(14deg) translate(-3%,4%)}}
-.hero .wrap{display:grid;gap:22px}
-.hero h1{max-width:15ch}
-.hero h1 em{font-style:italic;color:var(--rose);font-weight:400}
-.hero .lead{font-size:clamp(1.15rem,1.9vw,1.32rem);max-width:58ch;color:var(--muted)}
-.gentle{display:flex;gap:14px;align-items:flex-start;max-width:62ch;padding:16px 18px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--muted);font-size:.98rem}
-.gentle svg{flex:none;width:22px;height:22px;margin-top:2px;color:var(--sage)}
-.gentle strong{color:var(--ink)}
-
-/* Where are you */
-.where{display:grid;gap:12px;margin-top:10px}
-.where p{font-weight:700}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;font-size:.98rem;transition:border-color .2s,transform .2s}
-.chip:hover{border-color:var(--rose);transform:translateY(-1px)}
-.chip span{color:var(--rose)}
-
-/* Sections */
-main section{padding-block:clamp(48px,7vw,84px);scroll-margin-top:80px}
-main section+section{border-top:1px solid var(--line)}
-.head{display:grid;gap:10px;margin-bottom:30px}
-
-/* Care team */
-.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
-.team article{padding:22px;border-radius:18px;background:var(--surface);box-shadow:var(--shadow);display:grid;gap:8px;align-content:start}
-.team .who{font-size:.85rem;color:var(--sage);font-weight:700}
-
-/* Journey */
-.phase{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(20px,4vw,56px);padding-block:30px}
-.phase+.phase{border-top:1px dashed var(--line)}
-.phase-side{position:sticky;top:96px;align-self:start;display:grid;gap:10px}
-.phase-side .feel{font-family:var(--display);font-style:italic;font-size:1.08rem;line-height:1.5;color:var(--muted);padding-left:14px;border-left:2px solid var(--rose-soft)}
-@media (max-width:820px){.phase{grid-template-columns:1fr}.phase-side{position:static}}
-.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px;position:relative}
-.steps::before{content:"";position:absolute;left:21px;top:24px;bottom:24px;width:2px;background:linear-gradient(var(--rose-soft),var(--sage-soft))}
-.step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;scroll-margin-top:96px}
-.num{position:relative;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:2px solid var(--rose-soft);color:var(--rose);font-family:var(--display);font-weight:560;font-size:1.1rem;font-variant-numeric:tabular-nums}
-.card{background:var(--surface);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow);display:grid;gap:8px}
-.step:target .card{outline:2px solid var(--rose);outline-offset:2px}
-.when{font-size:.85rem;color:var(--sage);font-weight:700}
-.card p{color:var(--muted)}
-details.ask{margin-top:4px;border-top:1px solid var(--line);padding-top:10px}
-details.ask summary{cursor:pointer;font-weight:700;color:var(--rose);list-style:none;display:flex;align-items:center;gap:8px;width:fit-content}
-details.ask summary::-webkit-details-marker{display:none}
-details.ask summary::before{content:"+";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--rose-soft);font-size:.95rem;line-height:1}
-details.ask[open] summary::before{content:"–"}
-details.ask ul{margin:10px 0 2px;padding-left:20px;display:grid;gap:4px}
-
-/* Urgent */
-.urgent{display:grid;gap:16px;padding:clamp(22px,4vw,34px);border-radius:22px;background:var(--amber-soft);border:1px solid var(--amber-line)}
-.urgent h2{color:var(--ink)}
-.urgent .big{font-size:1.12rem;max-width:var(--measure)}
-.urgent .call{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
-.urgent .n{font-family:var(--display);font-size:2.6rem;line-height:1;color:var(--amber);font-variant-numeric:tabular-nums}
-.urgent ul{margin:0;padding-left:20px;display:grid;gap:4px;max-width:var(--measure)}
-.urgent .label{color:var(--amber)}
-
-/* Support */
-.support{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
-.support article{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:20px;border-radius:16px;background:var(--surface);box-shadow:var(--shadow)}
-.support svg{width:40px;height:40px;padding:9px;border-radius:12px;background:var(--sage-soft);color:var(--sage)}
-.support h3{margin-bottom:6px}
-.support p{color:var(--muted);font-size:1rem}
-.words{margin-top:34px;display:grid;gap:14px}
-.words dl{margin:0;display:flex;flex-wrap:wrap;gap:10px}
-.words div{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
-.words dt{font-weight:700;font-family:var(--display);font-size:1.05rem}
-.words dd{margin:0;font-size:.92rem;color:var(--muted)}
-
-/* Family */
-.family{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-.family article{padding:24px;border-radius:18px;display:grid;gap:12px;align-content:start}
-.family .do{background:var(--sage-soft)}
-.family .ease{background:var(--rose-soft)}
-.family .you{background:var(--surface);box-shadow:var(--shadow)}
-.family ul{margin:0;padding-left:20px;display:grid;gap:8px}
-.family .say{font-family:var(--display);font-style:italic}
-
-/* Checklist */
-.sheet{background:var(--surface);border-radius:20px;padding:clamp(20px,4vw,34px);box-shadow:var(--shadow);display:grid;gap:26px}
-.sheet .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px 40px}
-.sheet fieldset{border:0;margin:0;padding:0;display:grid;gap:4px;align-content:start}
-.sheet legend{font-family:var(--display);font-size:1.25rem;font-weight:560;margin-bottom:8px;padding:0}
-.tick{display:flex;gap:12px;align-items:flex-start;padding:8px 10px;border-radius:10px;cursor:pointer}
-.tick:hover{background:var(--paper)}
-.tick input{appearance:none;flex:none;width:22px;height:22px;margin:2px 0 0;border:2px solid var(--line);border-radius:7px;background:var(--surface);display:grid;place-items:center;cursor:pointer;transition:background .15s,border-color .15s}
-.tick input:checked{background:var(--sage);border-color:var(--sage)}
-.tick input:checked::after{content:"";width:6px;height:11px;border:solid var(--surface);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
-.tick input:checked+span{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
-.notes{display:grid;gap:8px}
-.notes label{font-weight:700}
-.notes textarea{width:100%;min-height:110px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:inherit;resize:vertical}
-.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.btn{font:inherit;font-weight:700;border-radius:999px;padding:11px 20px;border:1px solid var(--rose);background:var(--rose);color:var(--on-rose);cursor:pointer}
-.btn.quiet{background:transparent;color:var(--rose)}
-.saved{font-size:.92rem;color:var(--muted)}
-
-/* Sources */
-.groups{display:grid;gap:34px}
-.group{display:grid;gap:14px}
-.group h3{font-size:1.1rem;color:var(--sage);font-family:var(--body);font-weight:700}
-.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
-.links a{display:grid;gap:4px;padding:18px 20px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;transition:border-color .2s}
-.links a:hover{border-color:var(--rose)}
-.links strong{font-family:var(--display);font-weight:560;font-size:1.08rem}
-.links span{color:var(--muted);font-size:.96rem}
-.links em{font-style:normal;color:var(--rose);font-size:.9rem;font-weight:700}
-
-/* About + footer */
-.about{display:grid;gap:16px;max-width:var(--measure)}
-.about .meta{font-size:.92rem;color:var(--muted)}
-footer{padding-block:40px 110px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
-footer .wrap{display:grid;gap:8px}
-footer strong{font-family:var(--display);color:var(--ink);font-weight:560;font-size:1.1rem}
-
-/* Always-visible urgent pill */
-.sos{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--amber-soft);border:1px solid var(--amber-line);color:var(--ink);text-decoration:none;font-weight:700;font-size:.95rem;box-shadow:var(--shadow)}
-.sos b{color:var(--amber);font-variant-numeric:tabular-nums}
-
-/* Gentle reveal from a visible resting state */
+.nav a:hover{background:var(--soft);color:var(--ink)}
+.nav a.lang{border:1px solid var(--line);color:var(--ink)}
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:clamp(48px,8vw,96px) clamp(40px,6vw,72px);background:radial-gradient(900px 480px at 85% -10%,var(--bg2),transparent 70%),radial-gradient(600px 400px at -5% 90%,var(--soft),transparent 70%)}
+.hero .wrap{display:grid;gap:36px;grid-template-columns:1.25fr .75fr;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--deep);background:var(--soft);padding:7px 14px;border-radius:999px;justify-self:start}
+.hero h1{font-size:clamp(2.5rem,6.2vw,4.6rem);margin-block:18px 20px}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--pink)}
+.lead{font-size:clamp(1.15rem,2vw,1.34rem);color:var(--muted);max-width:52ch;margin:0 0 26px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:700;text-decoration:none;border-radius:999px;padding:13px 24px;background:var(--btn);color:var(--onbtn);border:2px solid var(--btn);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn.quiet{background:transparent;color:var(--deep);border-color:var(--pink)}
+.art{display:grid;place-items:center;position:relative}
+.art .halo{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle,var(--soft),transparent 68%)}
+.art svg{position:relative;width:min(300px,64vw);height:auto;filter:drop-shadow(0 14px 22px rgb(214 51 108/.25))}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.art{order:-1}.art svg{width:140px}}
+/* 16 of 16 */
+.count{padding-block:8px 60px}
+.count .box{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:clamp(22px,4vw,38px);display:grid;gap:18px;text-align:center}
+.count .big{font-family:var(--display);font-size:clamp(2rem,5vw,3.2rem);color:var(--deep)}
+.count .big small{font-size:.45em;color:var(--muted);font-family:var(--body);display:block;letter-spacing:.04em}
+.dots{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;max-width:520px;margin-inline:auto;padding:0;list-style:none}
+.dots li{aspect-ratio:1;border-radius:50%;background:var(--pink);color:#fff;display:grid;place-items:center;font-size:.78rem;font-weight:700}
+.dots li:last-child{background:var(--deep);box-shadow:0 0 0 4px var(--soft)}
+@media (max-width:480px){.dots{grid-template-columns:repeat(4,1fr)}}
+/* chapters */
+.story{padding-block:20px 40px}
+.chapter{display:grid;grid-template-columns:190px 1fr;gap:12px 36px;padding-block:34px;border-top:1px solid var(--line)}
+.chapter .date{font-family:var(--display);font-size:1.5rem;color:var(--pink);line-height:1.15}
+.chapter .date small{display:block;font-family:var(--body);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.chapter h2{font-size:clamp(1.7rem,3.2vw,2.3rem);margin-bottom:14px}
+.chapter p{margin:0 0 14px;max-width:var(--measure)}
+@media (max-width:760px){.chapter{grid-template-columns:1fr}}
+/* quote */
+.band{background:linear-gradient(135deg,var(--soft),var(--bg2));padding-block:clamp(48px,8vw,88px);position:relative;overflow:hidden}
+.band .wrap{max-width:820px;text-align:center;display:grid;gap:20px;justify-items:center}
+.band .mark{font-family:var(--display);font-size:7rem;line-height:.6;color:var(--pink);opacity:.8;height:44px}
+.band blockquote{margin:0;font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:1.15;color:var(--ink)}
+.band cite{font-style:normal;font-size:.9rem;letter-spacing:.12em;text-transform:uppercase;color:var(--deep);font-weight:700}
+.band p{margin:0;max-width:58ch;color:var(--muted)}
+/* celebrate */
+.celebrate{padding-block:clamp(48px,7vw,84px)}
+.celebrate .box{border-radius:28px;padding:clamp(26px,5vw,56px);background:linear-gradient(135deg,var(--pink),var(--deep));color:#fff;display:grid;gap:14px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.celebrate .box::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:rgb(255 255 255/.12)}
+.celebrate .date{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;opacity:.9}
+.celebrate h2{font-size:clamp(1.9rem,4vw,3rem)}
+.celebrate p{margin:0;max-width:56ch;font-size:1.16rem}
+/* share */
+.share{padding-block:20px clamp(48px,7vw,80px)}
+.share .head{display:grid;gap:12px;max-width:var(--measure);margin-bottom:28px}
+.share .head h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+.share .head p{margin:0;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.two article{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow);display:grid;gap:8px;align-content:start}
+.two h3{font-size:1.35rem;color:var(--deep)}.two p{margin:0;color:var(--muted)}
+.cta{margin-top:26px}
+@media (max-width:700px){.two{grid-template-columns:1fr}}
+footer{padding-block:40px 56px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem;text-align:center}
+footer .wrap{display:grid;gap:8px;justify-items:center}
+footer svg{width:34px;height:34px}
+footer strong{font-family:var(--display);font-size:1.15rem;color:var(--ink);font-weight:560}
 @media (prefers-reduced-motion:no-preference){
-  .hero .wrap>*{animation:rise .7s ease-out both}
-  .hero .wrap>*:nth-child(2){animation-delay:.08s}
-  .hero .wrap>*:nth-child(3){animation-delay:.16s}
-  .hero .wrap>*:nth-child(4){animation-delay:.24s}
-  .hero .wrap>*:nth-child(5){animation-delay:.32s}
-  @keyframes rise{from{transform:translateY(10px)}to{transform:none}}
+ .art svg{animation:beat 3.2s ease-in-out infinite;transform-origin:50% 60%}
+ @keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+ .dots li{animation:pop .5s both}
+ @keyframes pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+ .reveal{animation:rise .8s both}
+ @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 }
-
-@media print{
-  .bar,.sos,.chips,.where,.actions,.skip,.hero::before{display:none!important}
-  body{background:#fff;color:#000;font-size:11pt}
-  main section{padding-block:18px;break-inside:auto}
-  .card,.team article,.support article,.links a,.sheet,.family article{box-shadow:none;border:1px solid #ccc;break-inside:avoid}
-  details.ask>*{display:block}
-  details.ask summary::before{display:none}
-  .phase-side{position:static}
-  a{color:#000}
-  .notes textarea{border:1px solid #999;min-height:160px}
-}
-.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-a.btn{display:inline-block;text-decoration:none}
-.card-guide{display:grid;gap:12px;max-width:var(--measure);padding:26px;border-radius:18px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
-.card-guide h2{font-size:1.6rem}
-.card-guide p{color:var(--muted);margin:0}
-.story{display:grid;gap:14px;max-width:var(--measure)}
-.story h2{font-size:1.7rem;margin-top:18px}
-.story p{margin:0;font-size:1.12rem;color:var(--ink)}
-blockquote.pull{margin:10px 0;padding:18px 22px;border-left:4px solid var(--rose);background:var(--rose-soft);border-radius:0 14px 14px 0;font-family:var(--display);font-size:1.4rem;line-height:1.35;color:var(--ink)}
-.timeline{list-style:none;display:grid;gap:0;margin:0;padding:0;max-width:var(--measure)}
-.timeline li{position:relative;padding:0 0 22px 28px;border-left:2px solid var(--line);margin-left:6px}
-.timeline li:last-child{padding-bottom:0;border-left-color:transparent}
-.timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--rose)}
-.timeline b{display:block;font-family:var(--display);font-size:1.15rem;font-weight:560}
-.timeline span{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<header class="bar">
-  <div class="wrap">
-    <a class="brand" href="#top" aria-label="Meine Reise">
-      <svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5c-3.6 0-5.6 2.7-5.6 5.6 0 3.4 2.6 6.3 5.6 9.6 3-3.3 5.6-6.2 5.6-9.6C21.6 7.7 19.6 5 16 5Z" style="stroke:var(--rose)"/><path d="M13.1 16.6 7 27.5M18.9 16.6 25 27.5" style="stroke:var(--rose)"/></svg>
-      Meine Reise
-    </a>
-    <nav class="nav" aria-label="Menü">
-      <a href="de-guide">Brustkrebs in Deutschland</a>
-      <a class="lang" href="/brustkrebs-guide/" hreflang="en" lang="en" aria-label="Read this page in English">English</a>
-    </nav>
-  </div>
-</header>
+<a class="skip" href="#story">Zu meiner Geschichte springen</a>
+<header class="bar"><div class="wrap">
+  <a class="brand" href="#top" aria-label="Meine Reise"><svg viewBox="0 0 64 64" fill="none" stroke="var(--pink)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 8C19 8 17 23 26 33c7 8 14 17 20 25"/><path d="M32 8c13 0 15 15 6 25-7 8-14 17-20 25"/></svg>Meine Reise</a>
+  <nav class="nav" aria-label="Menu"><a href="de-guide">Brustkrebs in Deutschland</a><a class="lang" href="/brustkrebs-guide/" hreflang="en" lang="en" aria-label="Read this page in English">English</a></nav>
+</div></header>
 
-<div class="hero" id="top">
-  <div class="wrap">
-    <div class="label">Pinktober</div>
-    <h1>Meine Reise. <em>In meinen eigenen Worten.</em></h1>
-    <p class="lead">Ich teile meine Geschichte und alles, was ich mir selbst an einem Ort gewünscht hätte, um aufzuklären. Für Menschen, die es betrifft, und für alle, die ihnen nahestehen.</p>
-    <div class="cta"><a class="btn" href="de-guide">Zum Ratgeber →</a></div>
+<div class="hero" id="top"><div class="wrap">
+  <div>
+    <span class="kicker">🎀 Pinktober</span>
+    <h1>Die erste Hürde <em>liegt hinter mir.</em></h1>
+    <p class="lead">Am 20. Oktober bekomme ich meine 16. und letzte Chemotherapie. Das ist meine Geschichte und alles, was ich mir selbst an einem Ort gewünscht hätte, geteilt in diesem Pinktober für Menschen, die es betrifft, und für alle, die ihnen nahestehen.</p>
+    <a class="btn" href="de-guide">Zum Ratgeber →</a>
   </div>
-</div>
+  <div class="art" aria-hidden="true"><div class="halo"></div><svg viewBox="0 0 64 64" fill="none" stroke="var(--pink)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 8C19 8 17 23 26 33c7 8 14 17 20 25"/><path d="M32 8c13 0 15 15 6 25-7 8-14 17-20 25"/></svg></div>
+</div></div>
 
-<main id="main">
-<section>
-  <div class="wrap">
-    <div class="head"><h2>Meine Reise in Kürze</h2></div>
-    <ol class="timeline"><li><b>9. April</b><span>Mein Hausarzt untersucht mich zum ersten Mal. Auf meiner Überweisung steht ein „Dringend“-Aufkleber.</span></li><li><b>Innerhalb eines Monats</b><span>Die Diagnose: aggressiver Brustkrebs, Stadium 3.</span></li><li><b>Jeden Tag in diesem Monat</b><span>Ein Arzttermin nach dem anderen.</span></li><li><b>20. Oktober</b><span>Meine 16. und letzte Chemotherapie.</span></li></ol>
-  </div>
-</section>
-<section>
-  <div class="wrap">
-    <div class="story"><h2>Der erste Blick</h2><p>Am 9. April hat mich meine Hausärztin untersucht. Ich hatte keine Beschwerden, nur einen kleinen Knoten, der seit ein paar Monaten da war. Er war aber innerhalb kurzer Zeit aggressiv gewachsen.</p><p>Ich sehe noch ihren Blick und die Eile vor mir. Sie bat die Anmeldung, einen Dringend-Aufkleber auf meine Überweisung zu kleben. Das war der Moment, in dem ich zum ersten Mal spürte, dass das nicht gut ausgehen könnte.</p><h2>Alles ging so schnell</h2><p>In Deutschland sagt man, dass es ewig dauert, einen Termin zu bekommen. Ich hatte innerhalb eines Monats meine Diagnose: aggressiver Brustkrebs, Stadium 3. Dieses Tempo war für mich schon ein klares Zeichen, wie ernst es war.</p><p>Meine ganze Welt stand kopf. In diesem Monat hatte ich jeden Tag irgendeinen Arzttermin. Meine Gedanken waren gemischt und überwältigend: die Nachricht, die täglichen Besuche, die Angst vor dem, was als Nächstes kommt.</p><h2>Was mir geholfen hat</h2><p>Als ich eine meiner Ärztinnen oder einen meiner Ärzte fragte, was auf mich zukommt, lautete die Antwort:</p><blockquote class="pull">„Stellen Sie sich das Schlimmste vom Schlimmsten vor.“</blockquote><p>Das klingt furchtbar, aber glauben Sie mir: Es hat funktioniert. Es hat mir geholfen, mich seelisch und körperlich vorzubereiten und zu wissen, gegen wen ich kämpfe. Das ist, was mir geholfen hat. Jeder Mensch ist anders.</p><h2>Wo ich heute stehe</h2><p>Es ist ein langer Weg, aber ich bin froh, die erste Hürde geschafft zu haben. Am 20. Oktober bekomme ich meine 16. und letzte Chemotherapie. Die erste Phase meiner Behandlung liegt hinter mir.</p><h2>Warum es diesen Ratgeber gibt</h2><p>In dieser Zeit war es sehr schwer, alle Informationen an einem Ort zu finden. Deshalb teile ich hier meine Erfahrung und alles, was Sie von Anfang bis Ende wissen müssen, und ich werde laufend mehr ergänzen.</p><p>Das ist meine Art, den Pinktober zu feiern und aufzuklären. Nicht nur für den Menschen, der es braucht, sondern auch für alle, die ihn umgeben.</p></div>
-  </div>
-</section>
-<section>
-  <div class="wrap">
-    <article class="card-guide">
-      <div class="label">Der Ratgeber</div>
-      <h2>Brustkrebs in Deutschland</h2>
-      <p>Ein sanfter Ratgeber für Betroffene, Angehörige und Freunde: vom ersten Befund über die Behandlung bis zur Nachsorge. Lesen Sie, was Sie jetzt brauchen.</p>
-      <div class="cta"><a class="btn quiet" href="de-guide">Zum Ratgeber →</a></div>
-    </article>
-  </div>
-</section>
-</main>
+<section class="count"><div class="wrap"><div class="box">
+  <div class="big">16 von 16<small>Chemotherapien</small></div>
+  <ol class="dots" aria-label="16 von 16 Chemotherapien"><li style="animation-delay:70ms">1</li><li style="animation-delay:140ms">2</li><li style="animation-delay:210ms">3</li><li style="animation-delay:280ms">4</li><li style="animation-delay:350ms">5</li><li style="animation-delay:420ms">6</li><li style="animation-delay:490ms">7</li><li style="animation-delay:560ms">8</li><li style="animation-delay:630ms">9</li><li style="animation-delay:700ms">10</li><li style="animation-delay:770ms">11</li><li style="animation-delay:840ms">12</li><li style="animation-delay:910ms">13</li><li style="animation-delay:980ms">14</li><li style="animation-delay:1050ms">15</li><li style="animation-delay:1120ms">16</li></ol>
+  <p style="margin:0;color:var(--muted)">Eine nach der anderen, bis zur letzten.</p>
+</div></div></section>
 
-<footer>
-  <div class="wrap">
-    <strong>Meine Reise</strong>
-    <p>Meine persönliche Geschichte und ein kostenloser Ratgeber. Beides ersetzt keine ärztliche Beratung.</p>
-    <p>Bei akuter Gefahr rufen Sie die 112.</p>
-  </div>
-</footer>
+<main id="story" class="story"><div class="wrap"><section class="chapter reveal"><div class="date"><small>01</small>9. April</div><div><h2>Der erste Blick</h2><p>Am 9. April hat mich meine Hausärztin untersucht. Ich hatte keine Beschwerden, nur einen kleinen Knoten, der seit ein paar Monaten da war. Er war aber innerhalb kurzer Zeit aggressiv gewachsen.</p><p>Ich sehe noch ihren Blick und die Eile vor mir. Sie bat die Anmeldung, einen Dringend-Aufkleber auf meine Überweisung zu kleben. Das war der Moment, in dem ich zum ersten Mal spürte, dass das nicht gut ausgehen könnte.</p></div></section><section class="chapter reveal"><div class="date"><small>02</small>Innerhalb eines Monats</div><div><h2>Alles ging so schnell</h2><p>In Deutschland sagt man, dass es ewig dauert, einen Termin zu bekommen. Ich hatte innerhalb eines Monats meine Diagnose: aggressiver Brustkrebs, Stadium 3. Dieses Tempo war für mich schon ein klares Zeichen, wie ernst es war.</p></div></section><section class="chapter reveal"><div class="date"><small>03</small>Der ganze Monat</div><div><h2>Eine Welt, die kopfstand</h2><p>Meine ganze Welt stand kopf. In diesem Monat hatte ich jeden Tag irgendeinen Arzttermin. Meine Gedanken waren gemischt und überwältigend: die Nachricht, die täglichen Besuche, die Angst vor dem, was als Nächstes kommt.</p></div></section></div></main>
+
+<section class="band"><div class="wrap">
+  <div class="mark" aria-hidden="true">“</div>
+  <span class="kicker">Die Worte, die mir geholfen haben</span>
+  <p>Als ich eine meiner Ärztinnen oder einen meiner Ärzte fragte, was auf mich zukommt, lautete die Antwort:</p>
+  <blockquote>Stellen Sie sich das Schlimmste vom Schlimmsten vor.</blockquote>
+  <cite>Eine meiner Ärztinnen oder einer meiner Ärzte</cite>
+  <p>Das klingt furchtbar, aber glauben Sie mir: Es hat funktioniert. Es hat mir geholfen, mich seelisch und körperlich vorzubereiten und zu wissen, gegen wen ich kämpfe. Das ist, was mir geholfen hat. Jeder Mensch ist anders.</p>
+</div></section>
+
+<section class="celebrate"><div class="wrap"><div class="box">
+  <span class="date">20. Oktober</span>
+  <h2>Die erste Hürde</h2>
+  <p>Es ist ein langer Weg, aber ich bin froh, die erste Hürde geschafft zu haben. Am 20. Oktober bekomme ich meine 16. und letzte Chemotherapie. Die erste Phase meiner Behandlung liegt hinter mir.</p>
+</div></div></section>
+
+<section class="share"><div class="wrap">
+  <div class="head"><h2>Warum ich das teile</h2><p>In dieser Zeit war es sehr schwer, alle Informationen an einem Ort zu finden. Deshalb teile ich meine Erfahrung und alles, was Sie von Anfang bis Ende wissen müssen, und ich werde laufend mehr ergänzen. Das ist meine Art, den Pinktober zu feiern und aufzuklären, nicht nur für den Menschen, der es braucht, sondern auch für alle, die ihn umgeben.</p></div>
+  <div class="two"><article><h3>Für Menschen, die es betrifft</h3><p>Den ganzen Weg an einem Ort finden, vom ersten Befund bis zur Nachsorge.</p></article><article><h3>Für alle um sie herum</h3><p>Verstehen, was geschieht, und wie Sie für einen geliebten Menschen da sein können.</p></article></div>
+  <div class="cta"><a class="btn" href="de-guide">Zum Ratgeber →</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <svg viewBox="0 0 64 64" fill="none" stroke="var(--pink)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 8C19 8 17 23 26 33c7 8 14 17 20 25"/><path d="M32 8c13 0 15 15 6 25-7 8-14 17-20 25"/></svg>
+  <strong>Meine Reise · Pinktober</strong>
+  <p style="margin:0">Meine persönliche Geschichte und ein kostenloser Ratgeber. Beides ersetzt keine ärztliche Beratung.</p>
+  <p style="margin:0">Bei akuter Gefahr rufen Sie die 112.</p>
+</div></footer>
 </body>
 </html>
