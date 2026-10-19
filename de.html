@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Brustkrebs in Deutschland</title>
+<meta name="description" content="Ein kostenloser, einfühlsamer Schritt-für-Schritt-Ratgeber zu Versorgung und Unterstützung bei Brustkrebs in Deutschland, für Patientinnen, Patienten, Angehörige und Freunde.">
+<link rel="alternate" hreflang="en" href="https://usha3012.github.io/brustkrebs-guide/">
+<link rel="alternate" hreflang="de" href="https://usha3012.github.io/brustkrebs-guide/de">
+<link rel="alternate" hreflang="x-default" href="https://usha3012.github.io/brustkrebs-guide/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;1,9..144,400&display=swap">
+<style>
+/* Layout: one calm reading column; the journey uses a sticky phase label beside its steps on wide screens. */
+:root{
+  --paper:#f5f6f2;      /* misty green-grey ground */
+  --surface:#ffffff;
+  --ink:#2b2731;        /* plum-tinted ink */
+  --muted:#5d5a64;
+  --line:#dcdfd8;
+  --rose:#9e4a66;       /* accent, used sparingly */
+  --rose-soft:#f4e4ea;
+  --on-rose:#ffffff;
+  --sage:#3c6858;       /* reassurance */
+  --sage-soft:#e2ebe5;
+  --amber:#7d5208;      /* urgent only */
+  --amber-soft:#fbefd9;
+  --amber-line:#ecd29f;
+  --shadow:0 1px 2px rgb(43 39 49 / .04),0 8px 24px rgb(43 39 49 / .05);
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Atkinson Hyperlegible",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --measure:66ch;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#18171b;--surface:#222026;--ink:#ece8ef;--muted:#aaa4ae;--line:#35323a;
+    --rose:#e8a0b8;--rose-soft:#3a2630;--on-rose:#24161c;
+    --sage:#93c5b0;--sage-soft:#1e2e28;
+    --amber:#f2c57d;--amber-soft:#34291a;--amber-line:#5a4523;
+    --shadow:0 1px 2px rgb(0 0 0 / .3);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#18171b;--surface:#222026;--ink:#ece8ef;--muted:#aaa4ae;--line:#35323a;
+  --rose:#e8a0b8;--rose-soft:#3a2630;--on-rose:#24161c;
+  --sage:#93c5b0;--sage-soft:#1e2e28;
+  --amber:#f2c57d;--amber-soft:#34291a;--amber-line:#5a4523;
+  --shadow:0 1px 2px rgb(0 0 0 / .3);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.0625rem/1.7 var(--body)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+a{color:var(--rose);text-underline-offset:.2em;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);font-weight:560;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,6vw,4.1rem);line-height:1.05;font-variation-settings:"opsz" 144}
+h2{font-size:clamp(1.75rem,3.4vw,2.4rem);line-height:1.15;font-variation-settings:"opsz" 96}
+h3{font-size:1.25rem;line-height:1.3;font-variation-settings:"opsz" 24}
+p{margin:0}
+.wrap{max-width:1080px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.label{font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--sage)}
+.intro{max-width:var(--measure);color:var(--muted);font-size:1.1rem}
+.stack{display:grid;gap:14px}
+.skip{position:absolute;left:12px;top:-60px;background:var(--surface);padding:10px 14px;border-radius:8px;z-index:50}
+.skip:focus{top:12px}
+
+/* Top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.1rem;color:var(--ink);text-decoration:none;white-space:nowrap}
+.brand svg{width:26px;height:26px;flex:none}
+.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:var(--muted);text-decoration:none;font-size:.95rem;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.nav a:hover{color:var(--ink);background:var(--surface)}
+.nav a.lang{border:1px solid var(--line);margin-left:6px;color:var(--ink)}
+.nav a.active{color:var(--ink);background:var(--rose-soft)}
+@media (max-width:760px){.bar .wrap{flex-direction:column;align-items:flex-start;gap:4px;padding-block:10px}.nav{width:100%;margin-left:-12px}}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;padding-block:clamp(56px,9vw,104px) 48px}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:min(620px,90vw);aspect-ratio:1;border-radius:46% 54% 60% 40%/50% 42% 58% 50%;background:radial-gradient(circle at 35% 40%,var(--rose-soft),transparent 62%),radial-gradient(circle at 70% 70%,var(--sage-soft),transparent 60%);z-index:-1;animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{to{transform:rotate(14deg) translate(-3%,4%)}}
+.hero .wrap{display:grid;gap:22px}
+.hero h1{max-width:15ch}
+.hero h1 em{font-style:italic;color:var(--rose);font-weight:400}
+.hero .lead{font-size:clamp(1.15rem,1.9vw,1.32rem);max-width:58ch;color:var(--muted)}
+.gentle{display:flex;gap:14px;align-items:flex-start;max-width:62ch;padding:16px 18px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--muted);font-size:.98rem}
+.gentle svg{flex:none;width:22px;height:22px;margin-top:2px;color:var(--sage)}
+.gentle strong{color:var(--ink)}
+
+/* Where are you */
+.where{display:grid;gap:12px;margin-top:10px}
+.where p{font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;font-size:.98rem;transition:border-color .2s,transform .2s}
+.chip:hover{border-color:var(--rose);transform:translateY(-1px)}
+.chip span{color:var(--rose)}
+
+/* Sections */
+main section{padding-block:clamp(48px,7vw,84px);scroll-margin-top:80px}
+main section+section{border-top:1px solid var(--line)}
+.head{display:grid;gap:10px;margin-bottom:30px}
+
+/* Care team */
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.team article{padding:22px;border-radius:18px;background:var(--surface);box-shadow:var(--shadow);display:grid;gap:8px;align-content:start}
+.team .who{font-size:.85rem;color:var(--sage);font-weight:700}
+
+/* Journey */
+.phase{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(20px,4vw,56px);padding-block:30px}
+.phase+.phase{border-top:1px dashed var(--line)}
+.phase-side{position:sticky;top:96px;align-self:start;display:grid;gap:10px}
+.phase-side .feel{font-family:var(--display);font-style:italic;font-size:1.08rem;line-height:1.5;color:var(--muted);padding-left:14px;border-left:2px solid var(--rose-soft)}
+@media (max-width:820px){.phase{grid-template-columns:1fr}.phase-side{position:static}}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px;position:relative}
+.steps::before{content:"";position:absolute;left:21px;top:24px;bottom:24px;width:2px;background:linear-gradient(var(--rose-soft),var(--sage-soft))}
+.step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;scroll-margin-top:96px}
+.num{position:relative;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:2px solid var(--rose-soft);color:var(--rose);font-family:var(--display);font-weight:560;font-size:1.1rem;font-variant-numeric:tabular-nums}
+.card{background:var(--surface);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow);display:grid;gap:8px}
+.step:target .card{outline:2px solid var(--rose);outline-offset:2px}
+.when{font-size:.85rem;color:var(--sage);font-weight:700}
+.card p{color:var(--muted)}
+details.ask{margin-top:4px;border-top:1px solid var(--line);padding-top:10px}
+details.ask summary{cursor:pointer;font-weight:700;color:var(--rose);list-style:none;display:flex;align-items:center;gap:8px;width:fit-content}
+details.ask summary::-webkit-details-marker{display:none}
+details.ask summary::before{content:"+";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--rose-soft);font-size:.95rem;line-height:1}
+details.ask[open] summary::before{content:"–"}
+details.ask ul{margin:10px 0 2px;padding-left:20px;display:grid;gap:4px}
+
+/* Urgent */
+.urgent{display:grid;gap:16px;padding:clamp(22px,4vw,34px);border-radius:22px;background:var(--amber-soft);border:1px solid var(--amber-line)}
+.urgent h2{color:var(--ink)}
+.urgent .big{font-size:1.12rem;max-width:var(--measure)}
+.urgent .call{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+.urgent .n{font-family:var(--display);font-size:2.6rem;line-height:1;color:var(--amber);font-variant-numeric:tabular-nums}
+.urgent ul{margin:0;padding-left:20px;display:grid;gap:4px;max-width:var(--measure)}
+.urgent .label{color:var(--amber)}
+
+/* Support */
+.support{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.support article{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:20px;border-radius:16px;background:var(--surface);box-shadow:var(--shadow)}
+.support svg{width:40px;height:40px;padding:9px;border-radius:12px;background:var(--sage-soft);color:var(--sage)}
+.support h3{margin-bottom:6px}
+.support p{color:var(--muted);font-size:1rem}
+.words{margin-top:34px;display:grid;gap:14px}
+.words dl{margin:0;display:flex;flex-wrap:wrap;gap:10px}
+.words div{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
+.words dt{font-weight:700;font-family:var(--display);font-size:1.05rem}
+.words dd{margin:0;font-size:.92rem;color:var(--muted)}
+
+/* Family */
+.family{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.family article{padding:24px;border-radius:18px;display:grid;gap:12px;align-content:start}
+.family .do{background:var(--sage-soft)}
+.family .ease{background:var(--rose-soft)}
+.family .you{background:var(--surface);box-shadow:var(--shadow)}
+.family ul{margin:0;padding-left:20px;display:grid;gap:8px}
+.family .say{font-family:var(--display);font-style:italic}
+
+/* Checklist */
+.sheet{background:var(--surface);border-radius:20px;padding:clamp(20px,4vw,34px);box-shadow:var(--shadow);display:grid;gap:26px}
+.sheet .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px 40px}
+.sheet fieldset{border:0;margin:0;padding:0;display:grid;gap:4px;align-content:start}
+.sheet legend{font-family:var(--display);font-size:1.25rem;font-weight:560;margin-bottom:8px;padding:0}
+.tick{display:flex;gap:12px;align-items:flex-start;padding:8px 10px;border-radius:10px;cursor:pointer}
+.tick:hover{background:var(--paper)}
+.tick input{appearance:none;flex:none;width:22px;height:22px;margin:2px 0 0;border:2px solid var(--line);border-radius:7px;background:var(--surface);display:grid;place-items:center;cursor:pointer;transition:background .15s,border-color .15s}
+.tick input:checked{background:var(--sage);border-color:var(--sage)}
+.tick input:checked::after{content:"";width:6px;height:11px;border:solid var(--surface);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.tick input:checked+span{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
+.notes{display:grid;gap:8px}
+.notes label{font-weight:700}
+.notes textarea{width:100%;min-height:110px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:inherit;resize:vertical}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:999px;padding:11px 20px;border:1px solid var(--rose);background:var(--rose);color:var(--on-rose);cursor:pointer}
+.btn.quiet{background:transparent;color:var(--rose)}
+.saved{font-size:.92rem;color:var(--muted)}
+
+/* Sources */
+.groups{display:grid;gap:34px}
+.group{display:grid;gap:14px}
+.group h3{font-size:1.1rem;color:var(--sage);font-family:var(--body);font-weight:700}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.links a{display:grid;gap:4px;padding:18px 20px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;transition:border-color .2s}
+.links a:hover{border-color:var(--rose)}
+.links strong{font-family:var(--display);font-weight:560;font-size:1.08rem}
+.links span{color:var(--muted);font-size:.96rem}
+.links em{font-style:normal;color:var(--rose);font-size:.9rem;font-weight:700}
+
+/* About + footer */
+.about{display:grid;gap:16px;max-width:var(--measure)}
+.about .meta{font-size:.92rem;color:var(--muted)}
+footer{padding-block:40px 110px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+footer .wrap{display:grid;gap:8px}
+footer strong{font-family:var(--display);color:var(--ink);font-weight:560;font-size:1.1rem}
+
+/* Always-visible urgent pill */
+.sos{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--amber-soft);border:1px solid var(--amber-line);color:var(--ink);text-decoration:none;font-weight:700;font-size:.95rem;box-shadow:var(--shadow)}
+.sos b{color:var(--amber);font-variant-numeric:tabular-nums}
+
+/* Gentle reveal from a visible resting state */
+@media (prefers-reduced-motion:no-preference){
+  .hero .wrap>*{animation:rise .7s ease-out both}
+  .hero .wrap>*:nth-child(2){animation-delay:.08s}
+  .hero .wrap>*:nth-child(3){animation-delay:.16s}
+  .hero .wrap>*:nth-child(4){animation-delay:.24s}
+  .hero .wrap>*:nth-child(5){animation-delay:.32s}
+  @keyframes rise{from{transform:translateY(10px)}to{transform:none}}
+}
+
+@media print{
+  .bar,.sos,.chips,.where,.actions,.skip,.hero::before{display:none!important}
+  body{background:#fff;color:#000;font-size:11pt}
+  main section{padding-block:18px;break-inside:auto}
+  .card,.team article,.support article,.links a,.sheet,.family article{box-shadow:none;border:1px solid #ccc;break-inside:avoid}
+  details.ask>*{display:block}
+  details.ask summary::before{display:none}
+  .phase-side{position:static}
+  a{color:#000}
+  .notes textarea{border:1px solid #999;min-height:160px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Ratgeber springen</a>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Brustkrebs in Deutschland, nach oben">
+      <svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5c-3.6 0-5.6 2.7-5.6 5.6 0 3.4 2.6 6.3 5.6 9.6 3-3.3 5.6-6.2 5.6-9.6C21.6 7.7 19.6 5 16 5Z" style="stroke:var(--rose)"/><path d="M13.1 16.6 7 27.5M18.9 16.6 25 27.5" style="stroke:var(--rose)"/></svg>
+      Brustkrebs in Deutschland
+    </a>
+    <nav class="nav" aria-label="Abschnitte">
+      <a href="#journey">Der Weg</a>
+      <a href="#urgent">Warnzeichen</a>
+      <a href="#support">Unterstützung</a>
+      <a href="#family">Angehörige &amp; Freunde</a>
+      <a href="#checklist">Checkliste</a>
+      <a href="#sources">Quellen</a>
+      <a class="lang" href="/brustkrebs-guide/" hreflang="en" lang="en" aria-label="Read this page in English">English</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <div class="label">Ein kostenloser Ratgeber für Patientinnen, Patienten und Angehörige in Deutschland</div>
+    <h1>Atmen Sie durch. <em>Sie müssen nicht alles heute lesen.</em></h1>
+    <p class="lead">Dieser Ratgeber begleitet Sie Schritt für Schritt durch die Versorgung bei Brustkrebs in Deutschland: vom ersten Befund über die Behandlung bis zu Erholung und Nachsorge. Lesen Sie, was Sie jetzt brauchen, und kommen Sie später zurück, wenn Sie bereit sind.</p>
+    <div class="gentle" role="note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+      <p><strong>Ein freundlicher Hinweis:</strong> Dieser Ratgeber soll Ihnen helfen, zu verstehen und sich vorzubereiten. Er ist keine medizinische Beratung und ersetzt nicht Ihr Brustzentrum oder Ihr Onkologie-Team. Jeder Behandlungsplan ist individuell. Fragen Sie Ihr Team, welche Schritte für Sie wann gelten.</p>
+    </div>
+    <div class="where">
+      <p>Wo stehen Sie gerade?</p>
+      <div class="chips">
+        <a class="chip" href="#step-1">Ich hatte einen unklaren Befund <span aria-hidden="true">→</span></a>
+        <a class="chip" href="#step-2">Ich warte auf Biopsie-Ergebnisse <span aria-hidden="true">→</span></a>
+        <a class="chip" href="#step-4">Wir planen die Behandlung <span aria-hidden="true">→</span></a>
+        <a class="chip" href="#step-5">Ich bin in Behandlung <span aria-hidden="true">→</span></a>
+        <a class="chip" href="#step-9">Ich habe die Behandlung abgeschlossen <span aria-hidden="true">→</span></a>
+        <a class="chip" href="#family">Ich unterstütze einen Menschen <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+<section id="start">
+  <div class="wrap">
+    <div class="head">
+      <div class="label">Hier beginnen</div>
+      <h2>Wer sich um Sie kümmert</h2>
+      <p class="intro">In Deutschland wird die Versorgung meist von einem zertifizierten Brustzentrum koordiniert, in dem ein Team von Fachleuten zusammenarbeitet. Je nach Situation begegnen Ihnen Gynäkologie, Radiologie, Pathologie, Brustchirurgie, medikamentöse Onkologie, Strahlentherapie, spezialisierte Pflegekräfte, Psychoonkologie und Sozialdienst.</p>
+    </div>
+    <div class="team">
+      <article>
+        <div class="who">Ihre erste Anlaufstelle</div>
+        <h3>Hausarzt, Hausärztin oder Gynäkologie</h3>
+        <p>Dort werden Beschwerden eingeschätzt, erste Untersuchungen veranlasst oder Sie an eine Brustspezialistin oder einen Brustspezialisten überwiesen. Wenn Sie einen neuen Knoten, Veränderungen der Haut oder der Brustwarze oder blutigen Ausfluss aus der Brustwarze bemerken, lassen Sie das zeitnah abklären.</p>
+      </article>
+      <article>
+        <div class="who">Spezialisierte Versorgung</div>
+        <h3>Brustzentrum</h3>
+        <p>Sie können fragen, ob das Zentrum von der Deutschen Krebsgesellschaft (DKG) zertifiziert ist und wie Ihr Fall in der Tumorkonferenz besprochen wird.</p>
+      </article>
+      <article>
+        <div class="who">Ihre Rechte</div>
+        <h3>Fragen, verstehen, entscheiden</h3>
+        <p>Sie dürfen verständliche Erklärungen, Kopien Ihrer Befunde und Bedenkzeit für Ihre Optionen verlangen. Eine Zweitmeinung ist Ihr Recht, wenn Sie unsicher sind. Bitte verzögern Sie dringende Behandlungen nicht, während Sie eine einholen.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="wrap">
+    <div class="head">
+      <div class="label">Der Ablauf</div>
+      <h2>Der Weg, Schritt für Schritt</h2>
+      <p class="intro">Das ist ein typischer Überblick, kein fester Zeitplan. Manche Untersuchungen laufen gleichzeitig, und nicht jede Person braucht jeden Schritt. Die Reihenfolge der Behandlung hängt von der Biologie des Tumors, seinem Stadium, Ihrer Gesundheit, Ihren Wünschen und dem Behandlungsziel ab.</p>
+    </div>
+
+    <div class="phase">
+      <div class="phase-side">
+        <div class="label">Phase eins</div>
+        <h3>Klarheit gewinnen</h3>
+        <p class="feel">Das Warten auf Ergebnisse ist oft das Schwerste. Es ist normal, sich aufgewühlt zu fühlen. Sie können im Zentrum anrufen und fragen, wann die Ergebnisse erwartet werden.</p>
+      </div>
+      <ol class="steps">
+        <li class="step" id="step-1"><div class="num">1</div><div class="card">
+          <div class="when">Erste Tage, so bald wie möglich</div>
+          <h3>Ein Befund oder Symptom wird abgeklärt</h3>
+          <p>Auf ein unklares Screening-Ergebnis oder ein Symptom folgen in der Regel eine klinische Untersuchung und Bildgebung, meist Mammographie und Ultraschall. In manchen Situationen wird auch eine MRT eingesetzt.</p>
+          <details class="ask"><summary>Was Sie fragen oder tun können</summary><ul>
+            <li>Fragen Sie, was gesehen wurde und welche Untersuchung als Nächstes ansteht.</li>
+            <li>Bewahren Sie Terminbriefe und Bildgebungsbefunde an einem Ort auf.</li>
+            <li>Denken Sie daran: Ein unklares Screening-Ergebnis bedeutet nicht automatisch Krebs.</li>
+          </ul></details>
+        </div></li>
+        <li class="step" id="step-2"><div class="num">2</div><div class="card">
+          <div class="when">Nach der Bildgebung; der Zeitpunkt variiert</div>
+          <h3>Biopsie und Pathologie</h3>
+          <p>Eine kleine Gewebeprobe, häufig mit einer Stanzbiopsie entnommen, wird von einer Pathologin oder einem Pathologen untersucht. Wird Krebs gefunden, kann der Befund Tumortyp und Grad, Hormonrezeptoren (ER/PR), den HER2-Status und manchmal Ki-67 beschreiben.</p>
+          <details class="ask"><summary>Was Sie fragen oder tun können</summary><ul>
+            <li>Bitten Sie um eine Kopie des pathologischen Befunds.</li>
+            <li>Fragen Sie, was jeder Marker für Ihre Behandlung bedeutet.</li>
+            <li>Rezeptortests und Zusatzuntersuchungen können Zeit brauchen. Fragen Sie, wann die Ergebnisse erwartet werden.</li>
+          </ul></details>
+        </div></li>
+        <li class="step" id="step-3"><div class="num">3</div><div class="card">
+          <div class="when">Bevor die Behandlung festgelegt wird</div>
+          <h3>Weitere Untersuchungen und Staging</h3>
+          <p>Ihr Team klärt, wie weit sich die Erkrankung ausgebreitet hat und ob weitere Bildgebung nötig ist. Dazu können eine MRT der Brust, ein Ultraschall der Lymphknoten oder in manchen Fällen CT, Knochenszintigraphie oder andere Aufnahmen gehören. Je nach Alter, Familiengeschichte und klinischen Kriterien kann eine genetische Beratung oder Testung angeboten werden.</p>
+          <details class="ask"><summary>Was Sie fragen oder tun können</summary><ul>
+            <li>Nicht jede Person braucht jede Aufnahme.</li>
+            <li>Fragen Sie, welche Frage die jeweilige Untersuchung beantworten soll.</li>
+            <li>Klären Sie, wie und wann die Ergebnisse mit Ihnen besprochen werden.</li>
+          </ul></details>
+        </div></li>
+      </ol>
+    </div>
+
+    <div class="phase">
+      <div class="phase-side">
+        <div class="label">Phase zwei</div>
+        <h3>Einen Plan machen</h3>
+        <p class="feel">Sie dürfen mitschreiben, sich Dinge wiederholen lassen und eine Vertrauensperson mitbringen. Gute Teams erwarten Fragen.</p>
+      </div>
+      <ol class="steps" start="4">
+        <li class="step" id="step-4"><div class="num">4</div><div class="card">
+          <div class="when">Sobald die wichtigsten Ergebnisse vorliegen</div>
+          <h3>Tumorkonferenz und gemeinsamer Behandlungsplan</h3>
+          <p>Ein Team von Fachleuten bespricht Ihre Befunde gemeinsam und empfiehlt einen Plan. Sie sollten über Ziel, Reihenfolge und erwartete Dauer der Behandlung informiert werden, ebenso über Nutzen, Risiken und Alternativen.</p>
+          <details class="ask"><summary>Was Sie fragen oder tun können</summary><ul>
+            <li>Fragen Sie, ob die Behandlung mit Medikamenten vor der Operation (neoadjuvant) oder mit der Operation beginnt.</li>
+            <li>Sprechen Sie über Fruchtbarkeit, Wechseljahre, Verhütung und Kinderwunsch, wenn das für Sie wichtig ist.</li>
+            <li>Fragen Sie, an wen Sie sich zwischen den Terminen wenden können.</li>
+          </ul></details>
+        </div></li>
+      </ol>
+    </div>
+
+    <div class="phase">
+      <div class="phase-side">
+        <div class="label">Phase drei</div>
+        <h3>Behandlung</h3>
+        <p class="feel">Die Behandlung kann auf eine Weise erschöpfen, die anderen schwer zu erklären ist. Um Hilfe zu bitten gehört dazu, gut für sich zu sorgen.</p>
+      </div>
+      <ol class="steps" start="5">
+        <li class="step" id="step-5"><div class="num">5</div><div class="card">
+          <div class="when">Wenn empfohlen; Wochen bis Monate</div>
+          <h3>Medikamente vor oder nach der Operation</h3>
+          <p>Je nach Subtyp und Stadium kann die Behandlung Chemotherapie, Anti-HER2-Therapie, endokrine (hormonblockierende) Therapie, Immuntherapie oder zielgerichtete Medikamente umfassen. Nicht jede Person braucht alles davon.</p>
+          <details class="ask"><summary>Was Sie fragen oder tun können</summary><ul>
+            <li>Fragen Sie vor jeder Behandlung nach Blutuntersuchungen, Begleitmedikation und danach, wie Nebenwirkungen vorgebeugt werden kann.</li>
+            <li>Lassen Sie sich die 24-Stunden-Notfallnummer und schriftliche Hinweise für Fieber oder andere Warnzeichen geben.</li>
+            <li>Sprechen Sie über Erschöpfung, Übelkeit, Infektionsrisiko, Nervenbeschwerden (Neuropathie), Haarveränderungen, Fruchtbarkeit und Eierstockfunktion sowie über Bedarf bei Arbeit oder Kinderbetreuung.</li>
+          </ul></details>
+        </div></li>
+        <li class="step" id="step-6"><div class="num">6</div><div class="card">
+          <div class="when">Zu dem Zeitpunkt, den Ihr Team wählt</div>
+          <h3>Operation und Erholung im Krankenhaus</h3>
+          <p>Möglich sind eine brusterhaltende Operation oder eine Mastektomie, bei Bedarf mit Untersuchung der Lymphknoten. Rekonstruktion oder onkoplastische Verfahren können besprochen werden. Art der Operation und Dauer des Krankenhausaufenthalts sind unterschiedlich.</p>
+          <details class="ask"><summary>Was Sie fragen oder tun können</summary><ul>
+            <li>Fragen Sie, welche Operation geplant ist und warum, auch zu einer möglichen Lymphknotenoperation.</li>
+            <li>Sprechen Sie über Rekonstruktion, Prothese, Drainagen, Wundpflege und Schmerzlinderung.</li>
+            <li>Fragen Sie nach Übungen für Arm und Schulter, Hebebeschränkungen, Autofahren und wann Sie Hilfe suchen sollten.</li>
+            <li>Fragen Sie, wann der endgültige pathologische Befund und die nächste Behandlungsentscheidung vorliegen.</li>
+          </ul></details>
+        </div></li>
+        <li class="step" id="step-7"><div class="num">7</div><div class="card">
+          <div class="when">Nach der Operation, falls nötig</div>
+          <h3>Strahlentherapie</h3>
+          <p>Eine Strahlentherapie wird vielen Menschen empfohlen, aber nicht allen. Planung und Zahl der Sitzungen hängen von der Operation, dem Befund und Ihrem individuellen Risiko ab. Sie erfolgt in der Regel ambulant.</p>
+          <details class="ask"><summary>Was Sie fragen oder tun können</summary><ul>
+            <li>Fragen Sie, wann die Planung stattfindet und wie viele Termine zu erwarten sind.</li>
+            <li>Sprechen Sie über Hautpflege, Müdigkeit, Anreise und Absprachen mit der Arbeit.</li>
+            <li>Fragen Sie, welche Beschwerden Sie während und nach der Behandlung melden sollen.</li>
+          </ul></details>
+        </div></li>
+        <li class="step" id="step-8"><div class="num">8</div><div class="card">
+          <div class="when">Kann bei Bedarf über Jahre weitergehen</div>
+          <h3>Langzeittherapie</h3>
+          <p>Bei hormonrezeptor-positiver Erkrankung kann eine endokrine Therapie über mehrere Jahre empfohlen werden. Je nach Wechseljahrstatus und Risiko kommen Tamoxifen, Aromatasehemmer und Ovarialsuppression in Frage. Andere Subtypen brauchen unter Umständen eine fortlaufende zielgerichtete Behandlung.</p>
+          <details class="ask"><summary>Was Sie fragen oder tun können</summary><ul>
+            <li>Fragen Sie, wie lange sie dauert, was sie bewirkt, welche Nebenwirkungen sie hat und wie sich diese lindern lassen.</li>
+            <li>Bitte setzen Sie Ihre Medikamente nicht ab und ändern Sie sie nicht, ohne vorher mit Ihrem behandelnden Team zu sprechen.</li>
+            <li>Sprechen Sie, wo es passt, über Knochengesundheit, Sexualität, Wechseljahrsbeschwerden und Kinderwunsch.</li>
+          </ul></details>
+        </div></li>
+      </ol>
+    </div>
+
+    <div class="phase">
+      <div class="phase-side">
+        <div class="label">Phase vier</div>
+        <h3>Das Leben nach der Behandlung</h3>
+        <p class="feel">Das Ende der Behandlung kann Erleichterung und neue Sorgen zugleich bringen. Beides ist häufig, und Unterstützung gibt es weiterhin für Sie.</p>
+      </div>
+      <ol class="steps" start="9">
+        <li class="step" id="step-9"><div class="num">9</div><div class="card">
+          <div class="when">Nach der intensiven Behandlung, wenn der Zeitpunkt passt</div>
+          <h3>Rehabilitation und Alltag</h3>
+          <p>Eine Rehabilitation (<em>Reha</em>) kann bei der körperlichen Erholung, bei Erschöpfung, seelischem Wohlbefinden und dem Wiedereinstieg in den Beruf helfen. Eine Anschlussrehabilitation (AHB) kann direkt auf die Krankenhausbehandlung folgen; andere Rehabilitation lässt sich auch später beantragen. Wer Anspruch hat und wer zahlt, hängt von Ihrer Situation ab.</p>
+          <details class="ask"><summary>Was Sie fragen oder tun können</summary><ul>
+            <li>Bitten Sie den Sozialdienst des Krankenhauses oder Ihre onkologische Praxis, Antrag und Zeitplan zu erklären.</li>
+            <li>Fragen Sie nach Physiotherapie, Lymphödem-Behandlung, Psychoonkologie, Ernährungs- und Bewegungsangeboten.</li>
+            <li>Sprechen Sie über eine stufenweise Wiedereingliederung, falls sie für Sie in Frage kommt.</li>
+          </ul></details>
+        </div></li>
+        <li class="step" id="step-10"><div class="num">10</div><div class="card">
+          <div class="when">Langfristige Betreuung</div>
+          <h3>Nachsorge</h3>
+          <p>Die Nachsorge richtet sich nach Ihrer Behandlung und Ihrem Risiko. Sie umfasst in der Regel regelmäßige Kontrolluntersuchungen und Bildgebung der Brust in den empfohlenen Abständen. Zusätzliche Aufnahmen oder Blutuntersuchungen sind ohne Beschwerden nicht automatisch für jede Person hilfreich.</p>
+          <details class="ask"><summary>Was Sie fragen oder tun können</summary><ul>
+            <li>Gehen Sie mit einem schriftlichen Nachsorgeplan: wer, wann, welche Bildgebung und wie Sie Termine buchen.</li>
+            <li>Wissen Sie, welches Team Ihre laufenden Medikamente und mögliche Spätfolgen betreut.</li>
+            <li>Melden Sie neue oder anhaltende Beschwerden. Sie müssen nicht bis zum nächsten Routinetermin warten.</li>
+          </ul></details>
+        </div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="urgent">
+  <div class="wrap">
+    <div class="urgent">
+      <div class="label">Sicherheit zuerst</div>
+      <h2>Wann Sie sofort Ihr Team anrufen sollten</h2>
+      <p class="big"><strong>Befolgen Sie die Notfallhinweise, die Ihnen Ihr Onkologie-Team gegeben hat.</strong> Während einer Chemotherapie oder anderen systemischen Behandlung kann Fieber ein medizinischer Notfall sein. Nutzen Sie die genaue Temperaturgrenze und Telefonnummer, die Ihr Zentrum Ihnen genannt hat, und warten Sie nicht bis zum nächsten Termin.</p>
+      <div class="call">
+        <span class="n">112</span>
+        <p>Rufen Sie die 112, wenn Sie sich sehr schlecht fühlen, Atemnot, Brustschmerzen, Verwirrtheit, nicht stillbare Blutungen oder andere lebensbedrohliche Beschwerden haben.</p>
+      </div>
+      <div>
+        <p><strong>Wenden Sie sich außerdem zeitnah an Ihr Team bei:</strong></p>
+        <ul>
+          <li>Anzeichen einer Infektion</li>
+          <li>einem Arm oder Bein, der plötzlich schmerzt, rot wird oder anschwillt</li>
+          <li>Erbrechen oder Durchfall, das Sie nicht in den Griff bekommen, oder wenn Sie nicht trinken können</li>
+          <li>neuen starken Schmerzen</li>
+          <li>Problemen mit Wunde, Drainage oder Port</li>
+        </ul>
+        <p class="saved" style="margin-top:8px">Diese Liste ist nicht vollständig. Wenn Sie etwas beunruhigt, ist ein Anruf immer in Ordnung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="support">
+  <div class="wrap">
+    <div class="head">
+      <div class="label">Praktische Hilfe in Deutschland</div>
+      <h2>Unterstützung über die medizinische Behandlung hinaus</h2>
+      <p class="intro">Krebs betrifft auch Geld, Arbeit, Zuhause und Familie. Hier können Sie vor allem nachfragen. Die Regeln hängen von Ihrer Versicherung, Ihrem Beruf und Ihrer Situation ab. Klären Sie daher alles, bevor Sie etwas organisieren.</p>
+    </div>
+    <div class="support">
+      <article>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3Z"/><path d="M12 9v6M9 12h6"/></svg>
+        <div><h3>Krankenkasse</h3><p>Fragen Sie Ihre gesetzliche oder private Krankenversicherung nach verordneten Medikamenten, Fahrten zur Behandlung, Haushaltshilfe, Rehabilitation sowie nach nötigen Genehmigungen oder Zuzahlungen.</p></div>
+      </article>
+      <article>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg>
+        <div><h3>Haushaltshilfe</h3><p>Manche Versicherte erhalten Hilfe zu Hause, wenn Krankheit oder Behandlung sie an notwendigen Aufgaben hindert und niemand sonst im Haushalt sie übernehmen kann. Fragen Sie Ihre Kasse, bevor Sie etwas organisieren; Genehmigung, Dauer und Zuzahlungen sind unterschiedlich.</p></div>
+      </article>
+      <article>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+        <div><h3>Krankschreibung und Einkommen</h3><p>Fragen Sie Ihre Ärztin oder Ihren Arzt, Ihren Arbeitgeber, Ihre Kasse oder eine Sozialberatung nach der Arbeitsunfähigkeitsbescheinigung (AU), der Lohnfortzahlung, dem Krankengeld und möglichen Fristen. Was Ihnen zusteht, hängt von Beruf und Versicherung ab.</p></div>
+      </article>
+      <article>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20c2-6 6-9 8-9s6 3 8 9"/><circle cx="12" cy="6" r="3"/></svg>
+        <div><h3>Rehabilitation und Beruf</h3><p>Fragen Sie den Sozialdienst des Krankenhauses oder die Deutsche Rentenversicherung nach medizinischer Rehabilitation, AHB und stufenweiser Wiedereingliederung. Wer zahlt und wie Sie den Antrag stellen, hängt von Ihrer Situation ab.</p></div>
+      </article>
+      <article>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>
+        <div><h3>Seelische und familiäre Unterstützung</h3><p>Sie können Psychoonkologie, Sozialarbeit, Familienberatung, Hilfe bei der Kinderbetreuung oder Unterstützung dabei erbitten, Kindern die Diagnose zu erklären. Brustzentren und Krebsberatungsstellen nennen Ihnen Angebote vor Ort.</p></div>
+      </article>
+      <article>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14l-1.5-6h-11L5 17Z"/><circle cx="8" cy="18.5" r="1.5"/><circle cx="16" cy="18.5" r="1.5"/><path d="M8 11l1.5-4h5L16 11"/></svg>
+        <div><h3>Fahrten und praktische Kosten</h3><p>Fragen Sie Ihre Kasse, ob verordnete Fahrten zur Behandlung erstattet werden können und welche Genehmigung oder Unterlagen nötig sind. Heben Sie Rezepte, Belege und Teilnahmebestätigungen auf.</p></div>
+      </article>
+    </div>
+
+    <div class="words">
+      <h3>Fachwörter, die Ihnen oft begegnen</h3>
+      <dl>
+        <div><dt>Brustzentrum</dt><dd>spezialisierte, zertifizierte Einheit für Brustkrebs</dd></div>
+        <div><dt>Tumorkonferenz</dt><dd>gemeinsame Fallbesprechung der Fachleute</dd></div>
+        <div><dt>Befund</dt><dd>Ergebnis oder Bericht einer Untersuchung</dd></div>
+        <div><dt>Biopsie</dt><dd>Entnahme einer Gewebeprobe</dd></div>
+        <div><dt>Nebenwirkungen</dt><dd>unerwünschte Wirkungen einer Behandlung</dd></div>
+        <div><dt>Haushaltshilfe</dt><dd>Hilfe im Haushalt, wenn Sie ihn nicht führen können</dd></div>
+        <div><dt>Krankengeld</dt><dd>Ersatz für entgangenes Gehalt durch die Krankenkasse</dd></div>
+        <div><dt>AHB</dt><dd>Anschlussrehabilitation direkt nach dem Krankenhaus</dd></div>
+        <div><dt>Nachsorge</dt><dd>regelmäßige Kontrolle nach der Behandlung</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="family">
+  <div class="wrap">
+    <div class="head">
+      <div class="label">Für Angehörige und Freunde</div>
+      <h2>Wenn jemand, den Sie lieben, die Diagnose erhält</h2>
+      <p class="intro">Sie brauchen nicht die perfekten Worte. Ruhige, praktische Anwesenheit zählt meist mehr als Ratschläge. Jeder Mensch ist anders: Lassen Sie die betroffene Person die Richtung bestimmen und fragen Sie, was sie sich wünscht.</p>
+    </div>
+    <div class="family">
+      <article class="do">
+        <h3>Was oft hilft</h3>
+        <ul>
+          <li>Bieten Sie etwas Konkretes an: „Soll ich Sie am Dienstag fahren?“ lässt sich leichter annehmen als „Sagen Sie Bescheid, wenn Sie etwas brauchen.“</li>
+          <li>Helfen Sie bei Essen, Einkäufen, Kinderbetreuung, Haustieren oder Papierkram.</li>
+          <li>Kommen Sie zu Terminen und schreiben Sie mit, wenn die Person das möchte.</li>
+          <li>Hören Sie mehr zu, als Sie reden. Schweigen ist in Ordnung.</li>
+          <li>Laden Sie weiter ein, und machen Sie es leicht, Nein zu sagen.</li>
+        </ul>
+      </article>
+      <article class="ease">
+        <h3>Wovon Sie besser etwas Abstand nehmen</h3>
+        <ul>
+          <li>Druck, „positiv zu bleiben“. Schwere Tage sind erlaubt.</li>
+          <li>Geschichten über Krebs bei anderen, ob gut oder schlecht.</li>
+          <li>Ungefragte Ratschläge zu Diäten, Nahrungsergänzung oder alternativen Heilmethoden.</li>
+          <li>Fragen zur Prognose, die die Person nicht selbst angesprochen hat.</li>
+        </ul>
+        <p class="say">„Ich bin da. Du musst nichts erklären.“</p>
+      </article>
+      <article class="you">
+        <h3>Sorgen Sie auch für sich</h3>
+        <p>Einen Menschen zu unterstützen ist anstrengend. Krebsberatungsstellen und der Krebsinformationsdienst helfen auch Angehörigen und Freunden. Wenn es Kinder in der Familie gibt, können die Psychoonkologie oder der Sozialdienst des Brustzentrums Ihnen helfen, ihnen altersgerecht zu erklären, was geschieht.</p>
+        <p><a href="#sources">Vertrauenswürdige Hilfsangebote ansehen</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="checklist">
+  <div class="wrap">
+    <div class="head">
+      <div class="label">Für Ihren Termin zum Mitnehmen</div>
+      <h2>Ihre Checkliste für den Arzttermin</h2>
+      <p class="intro">Haken Sie ab, was Sie brauchen. Ihre Haken und Notizen werden nur in diesem Browser auf diesem Gerät gespeichert. Bringen Sie gern eine Vertrauensperson zum Mitschreiben mit.</p>
+    </div>
+    <form class="sheet" id="sheet" onsubmit="return false">
+      <div class="cols">
+        <fieldset>
+          <legend>Vor dem Termin</legend>
+          <label class="tick"><input type="checkbox" id="c-card"><span>Versichertenkarte und Überweisung oder Terminbrief</span></label>
+          <label class="tick"><input type="checkbox" id="c-imaging"><span>Bildgebungsbefunde und Aufnahmen, falls vorhanden</span></label>
+          <label class="tick"><input type="checkbox" id="c-path"><span>Biopsie-, Pathologie- und frühere Arztbefunde</span></label>
+          <label class="tick"><input type="checkbox" id="c-meds"><span>Liste der aktuellen Medikamente und Allergien</span></label>
+          <label class="tick"><input type="checkbox" id="c-family"><span>Brust-, Eierstock- oder verwandte Krebserkrankungen in der Familie</span></label>
+          <label class="tick"><input type="checkbox" id="c-timeline"><span>Ein Verlauf Ihrer Beschwerden und Ihre Fragen</span></label>
+          <label class="tick"><input type="checkbox" id="c-notes"><span>Notizbuch oder Handy zum Mitschreiben</span></label>
+          <label class="tick"><input type="checkbox" id="c-person"><span>Eine Dolmetscherin oder Begleitperson, falls nötig</span></label>
+        </fieldset>
+        <fieldset>
+          <legend>Fragen, die Sie stellen können</legend>
+          <label class="tick"><input type="checkbox" id="q-confirmed"><span>Was ist gesichert, und was ist noch unklar?</span></label>
+          <label class="tick"><input type="checkbox" id="q-diagnosis"><span>Wie lautet meine genaue Diagnose und, falls bekannt, das Stadium?</span></label>
+          <label class="tick"><input type="checkbox" id="q-markers"><span>Wie sind meine Werte für ER, PR, HER2 und Grading?</span></label>
+          <label class="tick"><input type="checkbox" id="q-board"><span>Wurde mein Fall in einer Tumorkonferenz besprochen?</span></label>
+          <label class="tick"><input type="checkbox" id="q-options"><span>Welche Behandlungsmöglichkeiten gibt es, und wozu dient jede?</span></label>
+          <label class="tick"><input type="checkbox" id="q-next"><span>Was passiert als Nächstes, und ungefähr wann?</span></label>
+          <label class="tick"><input type="checkbox" id="q-urgent"><span>Bei welchen Nebenwirkungen soll ich sofort anrufen?</span></label>
+          <label class="tick"><input type="checkbox" id="q-weekend"><span>Wen kontaktiere ich abends oder am Wochenende?</span></label>
+          <label class="tick"><input type="checkbox" id="q-copies"><span>Kann ich Kopien meiner Befunde und einen schriftlichen Plan bekommen?</span></label>
+          <label class="tick"><input type="checkbox" id="q-psycho"><span>Kann ich mit der Psychoonkologie oder dem Sozialdienst sprechen?</span></label>
+          <label class="tick"><input type="checkbox" id="q-cover"><span>Welche Unterstützung können meine Kasse oder Rentenversicherung übernehmen?</span></label>
+          <label class="tick"><input type="checkbox" id="q-appt"><span>Wann ist mein nächster Termin, und bei wem?</span></label>
+        </fieldset>
+      </div>
+      <div class="notes">
+        <label for="n-notes">Meine Notizen, nächster Termin und Kontakte</label>
+        <textarea id="n-notes" placeholder="z. B. Nächster Termin Di 10:30 bei Dr. … · Pflegekraft im Brustzentrum: Telefon …"></textarea>
+      </div>
+      <div class="actions">
+        <button class="btn" type="button" id="print">Drucken oder als PDF speichern</button>
+        <button class="btn quiet" type="button" id="clear">Haken und Notizen löschen</button>
+        <span class="saved" id="status" aria-live="polite"></span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="wrap">
+    <div class="head">
+      <div class="label">Verlässliche Informationen</div>
+      <h2>Kostenlose, zuverlässige Quellen</h2>
+      <p class="intro">Sie stammen von deutschen Krebsorganisationen auf Bundesebene und aus der aktuellen evidenzbasierten Leitlinie. Empfehlungen ändern sich, achten Sie daher auf das Veröffentlichungsdatum.</p>
+    </div>
+    <div class="groups">
+      <div class="group">
+        <h3>Hier beginnen</h3>
+        <div class="links">
+          <a href="https://www.leitlinienprogramm-onkologie.de/patientenleitlinien/brustkrebs/" target="_blank" rel="noopener"><strong>Patientinnenleitlinie Brustkrebs</strong><span>Verständlich geschriebene Patientenleitlinie zu frühem und metastasiertem Brustkrebs aus dem Leitlinienprogramm Onkologie. Kostenlos zu lesen und zu drucken.</span><em>Patientenleitlinien öffnen ↗</em></a>
+          <a href="https://www.krebsinformationsdienst.de/brustkrebs" target="_blank" rel="noopener"><strong>DKFZ Krebsinformationsdienst</strong><span>Unabhängige Krebsinformation, Erklärungen zu Behandlungen und Nebenwirkungen und ein kostenloser Informationsdienst, den Sie kontaktieren können.</span><em>Thema Brustkrebs ↗</em></a>
+          <a href="https://www.krebshilfe.de/" target="_blank" rel="noopener"><strong>Deutsche Krebshilfe</strong><span>Kostenlose Informationsbroschüren, Informationen zur Krebsberatung und Hilfsprogramme.</span><em>Zur Website ↗</em></a>
+        </div>
+      </div>
+      <div class="group">
+        <h3>Mit jemandem sprechen</h3>
+        <div class="links">
+          <a href="https://www.krebsinformationsdienst.de/wegweiser/adressen/krebsberatungsstellen.php" target="_blank" rel="noopener"><strong>Krebsberatungsstellen</strong><span>Regionale Krebsberatung und psychosoziale Unterstützung in Ihrer Nähe, für Betroffene und Angehörige.</span><em>Beratungsstelle finden ↗</em></a>
+          <a href="https://brustkrebsdeutschland.de/" target="_blank" rel="noopener"><strong>Brustkrebs Deutschland e.V.</strong><span>Patientenaufklärung, Gespräche mit Expertinnen und Experten, Webinare und Austausch mit anderen Betroffenen.</span><em>Zur Website ↗</em></a>
+        </div>
+      </div>
+      <div class="group">
+        <h3>Praktische Hilfe und das System</h3>
+        <div class="links">
+          <a href="https://www.deutsche-rentenversicherung.de/" target="_blank" rel="noopener"><strong>Deutsche Rentenversicherung</strong><span>Offizielle Informationen zu medizinischer Rehabilitation und zur Unterstützung beim Wiedereinstieg in den Beruf.</span><em>Zur Website ↗</em></a>
+          <a href="https://gesund.bund.de/" target="_blank" rel="noopener"><strong>gesund.bund.de</strong><span>Gesundheitsinformationen des Bundes zum deutschen Gesundheitssystem und zu Patientenrechten.</span><em>Zur Website ↗</em></a>
+          <a href="https://www.krebsgesellschaft.de/" target="_blank" rel="noopener"><strong>Deutsche Krebsgesellschaft</strong><span>Informationen zu zertifizierter Krebsversorgung und Qualitätsstandards, mit Suche nach zertifizierten Brustzentren.</span><em>Zur Website ↗</em></a>
+        </div>
+      </div>
+      <div class="group">
+        <h3>Zum Weiterlesen</h3>
+        <div class="links">
+          <a href="https://www.leitlinienprogramm-onkologie.de/leitlinien/mammakarzinom" target="_blank" rel="noopener"><strong>S3-Leitlinie Mammakarzinom</strong><span>Die evidenzbasierte Leitlinie für Fachleute, Version 5 (Januar 2026). Nützlich, um zu prüfen, ob Informationen den aktuellen Empfehlungen entsprechen.</span><em>Leitlinie öffnen ↗</em></a>
+          <a href="https://www.krebsinformationsdienst.de/" target="_blank" rel="noopener"><strong>Krebsinformationsdienst, alle Themen</strong><span>Die gesamte Bibliothek des Krebsinformationsdienstes des DKFZ.</span><em>Zur Website ↗</em></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about">
+      <div class="label">Über diesen Ratgeber</div>
+      <h2>Kostenlose Informationen, mit Sorgfalt geteilt</h2>
+      <p>Dieser Ratgeber möchte den Weg bei Brustkrebs in Deutschland für Betroffene, Familien und Freunde verständlicher machen, auch für Menschen, die das deutsche Gesundheitssystem noch nicht kennen. Er ist kostenlos und soll Ihnen helfen, sich vorzubereiten und informierte Gespräche mit Ihrem Behandlungsteam zu führen.</p>
+      <p><strong>Unsere Grundsätze:</strong> keine bezahlten medizinischen Empfehlungen, keine Versprechen zum Behandlungserfolg und kein Ersatz für individuelle ärztliche Beratung. Wir verlinken klar auf anerkannte Quellen und prüfen die Inhalte, wenn sich Leitlinien ändern. Erfahrungsberichte, die wir künftig ergänzen, werden als persönliche Erfahrungen gekennzeichnet, weil jeder Weg anders ist.</p>
+      <p class="meta">Letzte inhaltliche Prüfung: 19. Oktober 2026. Die oben verlinkte medizinische Leitlinie ist Version 5, veröffentlicht im Januar 2026. Bitte prüfen Sie bei den Quellorganisationen, ob es neuere Stände gibt. Diese Seite ist ein Einstieg zur Information, kein vollständiges klinisches Protokoll.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>Brustkrebs in Deutschland</strong>
+    <p>Ein kostenloser Ratgeber, der Menschen mit Brustkrebs in Deutschland Orientierung gibt.</p>
+    <p>Bei akuter Gefahr rufen Sie die 112. Bei Fragen zu Ihrer Behandlung wenden Sie sich an Ihr eigenes Behandlungsteam.</p>
+    <p><a href="#top">Nach oben ↑</a></p>
+  </div>
+</footer>
+
+<a class="sos" href="#urgent">Sehr schlecht? <b>112</b></a>
+
+<script>
+(function(){
+  var KEY="bcg-checklist-v1";
+  var sheet=document.getElementById("sheet");
+  var status=document.getElementById("status");
+  var boxes=sheet.querySelectorAll("input[type=checkbox]");
+  var notes=document.getElementById("n-notes");
+  var timer;
+
+  function load(){
+    try{
+      var data=JSON.parse(localStorage.getItem(KEY)||"{}");
+      boxes.forEach(function(b){b.checked=!!(data.ticks&&data.ticks[b.id])});
+      notes.value=data.notes||"";
+    }catch(e){}
+  }
+  function save(){
+    var ticks={};
+    boxes.forEach(function(b){if(b.checked)ticks[b.id]=true});
+    try{
+      localStorage.setItem(KEY,JSON.stringify({ticks:ticks,notes:notes.value}));
+      status.textContent="Auf diesem Gerät gespeichert";
+    }catch(e){
+      status.textContent="In diesem Browser nicht speicherbar. Drucken Sie die Liste, um sie zu behalten.";
+    }
+    clearTimeout(timer);
+    timer=setTimeout(function(){status.textContent=""},2500);
+  }
+
+  sheet.addEventListener("change",save);
+  notes.addEventListener("input",save);
+  document.getElementById("print").addEventListener("click",function(){window.print()});
+
+  var clear=document.getElementById("clear");
+  var armed=false;
+  clear.addEventListener("click",function(){
+    if(!armed){
+      armed=true;
+      clear.textContent="Nochmal tippen, um alles zu löschen";
+      setTimeout(function(){armed=false;clear.textContent="Haken und Notizen löschen"},4000);
+      return;
+    }
+    armed=false;
+    clear.textContent="Haken und Notizen löschen";
+    boxes.forEach(function(b){b.checked=false});
+    notes.value="";
+    try{localStorage.removeItem(KEY)}catch(e){}
+    status.textContent="Gelöscht";
+  });
+
+  load();
+
+  // Highlight the section you're reading in the top bar
+  var links=document.querySelectorAll(".nav a");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          links.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+en.target.id)});
+        }
+      });
+    },{rootMargin:"-45% 0px -50% 0px"});
+    ["journey","urgent","support","family","checklist","sources"].forEach(function(id){
+      var el=document.getElementById(id);if(el)io.observe(el);
+    });
+  }
+
+  // Open the questions on a step when you jump to it
+  function openTarget(){
+    var t=location.hash&&document.querySelector(location.hash+".step details");
+    if(t)t.open=true;
+  }
+  window.addEventListener("hashchange",openTarget);
+  openTarget();
+})();
+</script>
+</body>
+</html>
