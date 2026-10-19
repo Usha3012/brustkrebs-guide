@@ -12,8 +12,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;1,9..144,400&display=swap">
 <style>
-:root{--bg:#fff4f8;--bg2:#ffe6ee;--card:#ffffff;--ink:#3a2030;--muted:#6a4b5b;--line:#f3cddb;--pink:#d6336c;--deep:#a61e4d;--soft:#ffdbe7;--mid:#f783ac;--btn:#a61e4d;--onbtn:#fff;--shadow:0 2px 4px rgb(166 30 77/.06),0 18px 40px rgb(166 30 77/.10);--display:"Fraunces",Georgia,"Times New Roman",serif;--body:"Atkinson Hyperlegible",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;--measure:62ch;color-scheme:light}
-@media (prefers-color-scheme:dark){:root{--bg:#1d1019;--bg2:#2a1522;--card:#2a1824;--ink:#fbe8f0;--muted:#d6b6c4;--line:#4a2a3b;--pink:#ff8fb7;--deep:#ffb6d0;--soft:#40202f;--mid:#ff8fb7;--btn:#ff9fc2;--onbtn:#2a0f1b;--shadow:0 1px 2px rgb(0 0 0/.35),0 18px 40px rgb(0 0 0/.35);color-scheme:dark}}
+:root{--bg:#fff4f8;--bg2:#ffe6ee;--card:#ffffff;--ink:#3a2030;--muted:#6a4b5b;--line:#f3cddb;--pink:#d6336c;--deep:#a61e4d;--soft:#ffdbe7;--mid:#f783ac;--btn:#a61e4d;--onbtn:#fff;--cel1:#d6336c;--cel2:#a61e4d;--oncel:#fff;--shadow:0 2px 4px rgb(166 30 77/.06),0 18px 40px rgb(166 30 77/.10);--display:"Fraunces",Georgia,"Times New Roman",serif;--body:"Atkinson Hyperlegible",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;--measure:62ch;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#1d1019;--bg2:#2a1522;--card:#2a1824;--ink:#fbe8f0;--muted:#d6b6c4;--line:#4a2a3b;--pink:#ff8fb7;--deep:#ffb6d0;--soft:#40202f;--mid:#ff8fb7;--btn:#ff9fc2;--onbtn:#2a0f1b;--cel1:#ff8fb7;--cel2:#ffc2d8;--oncel:#2a0f1b;--shadow:0 1px 2px rgb(0 0 0/.35),0 18px 40px rgb(0 0 0/.35);color-scheme:dark}}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.1rem;line-height:1.65;-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:var(--display);font-weight:560;letter-spacing:-.01em;margin:0;text-wrap:balance;line-height:1.1}
@@ -48,9 +48,9 @@ a{color:var(--deep)}
 .count .box{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:clamp(22px,4vw,38px);display:grid;gap:18px;text-align:center}
 .count .big{font-family:var(--display);font-size:clamp(2rem,5vw,3.2rem);color:var(--deep)}
 .count .big small{font-size:.45em;color:var(--muted);font-family:var(--body);display:block;letter-spacing:.04em}
-.dots{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;max-width:520px;margin-inline:auto;padding:0;list-style:none}
-.dots li{aspect-ratio:1;border-radius:50%;background:var(--pink);color:#fff;display:grid;place-items:center;font-size:.78rem;font-weight:700}
-.dots li:last-child{background:var(--deep);box-shadow:0 0 0 4px var(--soft)}
+.dots{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;width:100%;max-width:440px;margin-inline:auto;padding:0;list-style:none}
+.dots li{aspect-ratio:1;border-radius:50%;background:var(--pink);color:#fff;display:grid;place-items:center;font-size:.95rem;font-weight:700}
+.dots li:last-child{background:var(--deep);color:var(--onbtn);box-shadow:0 0 0 4px var(--soft)}
 @media (max-width:480px){.dots{grid-template-columns:repeat(4,1fr)}}
 /* chapters */
 .story{padding-block:20px 40px}
@@ -69,7 +69,7 @@ a{color:var(--deep)}
 .band p{margin:0;max-width:58ch;color:var(--muted)}
 /* celebrate */
 .celebrate{padding-block:clamp(48px,7vw,84px)}
-.celebrate .box{border-radius:28px;padding:clamp(26px,5vw,56px);background:linear-gradient(135deg,var(--pink),var(--deep));color:#fff;display:grid;gap:14px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.celebrate .box{border-radius:28px;padding:clamp(26px,5vw,56px);background:linear-gradient(135deg,var(--cel1),var(--cel2));color:var(--oncel);display:grid;gap:14px;box-shadow:var(--shadow);position:relative;overflow:hidden}
 .celebrate .box::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:rgb(255 255 255/.12)}
 .celebrate .date{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;opacity:.9}
 .celebrate h2{font-size:clamp(1.9rem,4vw,3rem)}
@@ -108,7 +108,7 @@ footer strong{font-family:var(--display);font-size:1.15rem;color:var(--ink);font
 
 <div class="hero" id="top"><div class="wrap">
   <div>
-    <span class="kicker">🎀 Pinktober</span>
+    <span class="kicker"><svg viewBox="0 0 64 64" width="16" height="16" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 8C19 8 17 23 26 33c7 8 14 17 20 25"/><path d="M32 8c13 0 15 15 6 25-7 8-14 17-20 25"/></svg>Pinktober</span>
     <h1>The first hurdle <em>is behind me.</em></h1>
     <p class="lead">On 20 October I am having my 16th and last chemotherapy. This is my story, and everything I wish I had found in one place, shared this Pinktober for the person going through it, and for the people around them.</p>
     <a class="btn" href="guide">Read the guide →</a>
