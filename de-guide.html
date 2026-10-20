@@ -110,7 +110,7 @@ main section+section{border-top:1px solid var(--line)}
 .head{display:grid;gap:10px;margin-bottom:30px}
 
 /* Care team */
-.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px}
 .team article{padding:22px;border-radius:18px;background:var(--surface);box-shadow:var(--shadow);display:grid;gap:8px;align-content:start}
 .team .who{font-size:.85rem;color:var(--sage);font-weight:700}
 
@@ -145,7 +145,7 @@ details.ask ul{margin:10px 0 2px;padding-left:20px;display:grid;gap:4px}
 .urgent .label{color:var(--amber)}
 
 /* Support */
-.support{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.support{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:18px}
 .support article{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:20px;border-radius:16px;background:var(--surface);box-shadow:var(--shadow)}
 .support svg{width:40px;height:40px;padding:9px;border-radius:12px;background:var(--sage-soft);color:var(--sage)}
 .support h3{margin-bottom:6px}
@@ -157,7 +157,7 @@ details.ask ul{margin:10px 0 2px;padding-left:20px;display:grid;gap:4px}
 .words dd{margin:0;font-size:.92rem;color:var(--muted)}
 
 /* Family */
-.family{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.family{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px}
 .family article{padding:24px;border-radius:18px;display:grid;gap:12px;align-content:start}
 .family .do{background:var(--sage-soft)}
 .family .ease{background:var(--rose-soft)}
@@ -167,7 +167,7 @@ details.ask ul{margin:10px 0 2px;padding-left:20px;display:grid;gap:4px}
 
 /* Checklist */
 .sheet{background:var(--surface);border-radius:20px;padding:clamp(20px,4vw,34px);box-shadow:var(--shadow);display:grid;gap:26px}
-.sheet .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px 40px}
+.sheet .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px 40px}
 .sheet fieldset{border:0;margin:0;padding:0;display:grid;gap:4px;align-content:start}
 .sheet legend{font-family:var(--display);font-size:1.25rem;font-weight:560;margin-bottom:8px;padding:0}
 .tick{display:flex;gap:12px;align-items:flex-start;padding:8px 10px;border-radius:10px;cursor:pointer}
@@ -188,7 +188,7 @@ details.ask ul{margin:10px 0 2px;padding-left:20px;display:grid;gap:4px}
 .groups{display:grid;gap:34px}
 .group{display:grid;gap:14px}
 .group h3{font-size:1.1rem;color:var(--sage);font-family:var(--body);font-weight:700}
-.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px}
 .links a{display:grid;gap:4px;padding:18px 20px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;transition:border-color .2s}
 .links a:hover{border-color:var(--rose)}
 .links strong{font-family:var(--display);font-weight:560;font-size:1.08rem}
@@ -227,7 +227,7 @@ footer strong{font-family:var(--display);color:var(--ink);font-weight:560;font-s
   a{color:#000}
   .notes textarea{border:1px solid #999;min-height:160px}
 }
-.orgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:30px}
+.orgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-bottom:30px}
 .org{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);display:grid;gap:10px;align-content:start}
 .org h3{font-size:1.2rem}.org p{margin:0;color:var(--muted);font-size:.98rem}
 .org .meta{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:.96rem}
@@ -235,6 +235,13 @@ footer strong{font-family:var(--display);color:var(--ink);font-weight:560;font-s
 .org .meta a{color:var(--rose)}
 .dir-sub{font-size:1.25rem;margin:30px 0 14px;font-family:var(--display)}
 .verified{font-size:.92rem;color:var(--muted);max-width:var(--measure)}
+
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+img,svg{max-width:100%}
+.org .meta li,.org p,.org h3,.links a{overflow-wrap:anywhere}
+@media (max-width:560px){.hero{padding-block:40px 32px}.chip{padding:9px 14px;font-size:.95rem}}
+@media (pointer:coarse){.nav a,.chip,.btn,.tick,summary{min-height:44px;display:inline-flex;align-items:center}.tick{display:flex}summary{display:list-item}}
+@media (min-width:1600px){html{font-size:112.5%}}
 </style>
 </head>
 <body>
