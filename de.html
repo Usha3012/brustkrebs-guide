@@ -104,6 +104,17 @@ img,svg{max-width:100%}
 @media (pointer:coarse){.nav a,.btn{min-height:44px;display:inline-flex;align-items:center}}
 @media (min-width:1600px){html{font-size:112.5%}}
 main p,main li,main dd,main dt,main h2,main h3,main em,main a,main span,main summary,footer p{overflow-wrap:anywhere}main p,main li,main dd{hyphens:auto;-webkit-hyphens:auto}
+
+.count{overflow-x:clip}
+.count .box{position:relative}
+.dots li:last-child{cursor:pointer;position:relative}
+.confetti{position:absolute;width:9px;height:14px;border-radius:2px;pointer-events:none;z-index:5;opacity:0}
+@media (prefers-reduced-motion:no-preference){
+ .dots li:last-child{animation:pop .5s both,glow 2.2s ease-in-out infinite}
+ @keyframes glow{0%,100%{box-shadow:0 0 0 4px var(--soft),0 0 0 0 rgb(214 51 108/0)}50%{box-shadow:0 0 0 7px var(--soft),0 0 26px 10px rgb(247 131 172/.65)}}
+ .confetti{animation:fly 1.9s cubic-bezier(.2,.7,.3,1) forwards}
+ @keyframes fly{0%{opacity:1;transform:translate(0,0) rotate(0)}45%{opacity:1;transform:translate(var(--dx),var(--dy)) rotate(calc(var(--rot)*.5))}100%{opacity:0;transform:translate(calc(var(--dx)*1.15),calc(var(--dy) + 190px)) rotate(var(--rot))}}
+}
 </style>
 </head>
 <body>
@@ -158,5 +169,33 @@ main p,main li,main dd,main dt,main h2,main h3,main em,main a,main span,main sum
   <p style="margin:0">Meine persönliche Geschichte und ein kostenloser Ratgeber. Beides ersetzt keine ärztliche Beratung.</p>
   <p style="margin:0">Bei akuter Gefahr rufen Sie die 112.</p>
 </div></footer>
+<script>
+(function(){
+  var dot=document.querySelector(".dots li:last-child"),box=document.querySelector(".count .box");
+  if(!dot||!box||window.matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+  var colors=["#d6336c","#f783ac","#ffd43b","#ffffff","#a61e4d","#ffa8c5"];
+  function burst(){
+    var r=dot.getBoundingClientRect(),b=box.getBoundingClientRect();
+    for(var i=0;i<44;i++){
+      var p=document.createElement("span");p.className="confetti";p.setAttribute("aria-hidden","true");
+      p.style.left=(r.left-b.left+r.width/2)+"px";p.style.top=(r.top-b.top+r.height/2)+"px";
+      p.style.background=colors[i%colors.length];
+      p.style.setProperty("--dx",(Math.random()*340-170)+"px");
+      p.style.setProperty("--dy",-(60+Math.random()*190)+"px");
+      p.style.setProperty("--rot",(Math.random()*720-360)+"deg");
+      p.style.animationDelay=(Math.random()*.25)+"s";
+      box.appendChild(p);
+      setTimeout(function(el){el.remove()},2600,p);
+    }
+  }
+  dot.addEventListener("click",burst);
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      if(es[0].isIntersecting){io.disconnect();setTimeout(burst,1300)}
+    },{threshold:.6});
+    io.observe(box);
+  }
+})();
+</script>
 </body>
 </html>
